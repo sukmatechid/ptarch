@@ -106,7 +106,7 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-emerald-200/80 hover:text-emerald-300 text-sm tracking-widest transition-colors duration-200 font-medium"
+              className="text-emerald-200/90 hover:text-emerald-300 text-sm tracking-widest transition-colors duration-200 font-medium"
             >
               {link.label}
             </a>
@@ -115,18 +115,14 @@ const Navbar = () => {
 
         {isMenuOpen && (
           <div
-            className={`md:hidden fixed top-16 left-0 right-0 z-10 ${
-              scrolled
-                ? "bg-emerald-950/95 backdrop-blur-md shadow-lg shadow-emerald-900/30"
-                : "bg-transparent"
-            }`}
+            className="md:hidden fixed top-16 left-0 right-0 z-10 bg-emerald-950/95 backdrop-blur-md shadow-lg shadow-emerald-900/30"
           >
             <nav className="flex flex-col p-4 space-y-3">
               {NAV_LINKS.map((link: NavLink) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-emerald-200/80 hover:text-emerald-300 text-sm tracking-widest transition-colors duration-200 font-medium"
+                  className="text-emerald-200/90 hover:text-emerald-300 text-sm tracking-widest transition-colors duration-200 font-medium"
                 >
                   {link.label}
                 </a>
