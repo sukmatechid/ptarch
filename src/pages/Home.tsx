@@ -6,7 +6,7 @@ import DaunPisanPanjangImage from "../assets/daun-pisang-panjang.jpg";
 import PapayaLeavesImage from "../assets/papaya-leaves.jpg";
 import BabyOctopusImage from "../assets/baby-octopus.jpg";
 import KeongImage from "../assets/keong.jpg";
-import CengkehImage from '../assets/cengkeh.jpeg'
+import CengkehImage from "../assets/cengkeh.jpeg";
 
 interface NavLink {
   label: string;
@@ -20,7 +20,7 @@ interface Product {
 }
 
 const NAV_LINKS: NavLink[] = [
-  { label: "About", href: "#about"},
+  { label: "About", href: "#about" },
   { label: "Products", href: "#products" },
   { label: "Vision & Mission", href: "#vision" },
   { label: "Contact", href: "#contact" },
@@ -40,6 +40,7 @@ const MARINE: Product[] = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = (): void => setScrolled(window.scrollY > 40);
@@ -73,12 +74,33 @@ const Navbar = () => {
               }}
             />
           </div>
-          <span className="font-black tracking-widest text-white uppercase text-md" >
+          <span className="font-black tracking-widest text-white uppercase text-md">
             PT ARCH
           </span>
         </div>
 
-        {/* Nav */}
+        <button
+          className="md:hidden p-2 hover:bg-gray-100 rounded transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="white"
+          >
+            {isMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link: NavLink) => (
             <a
@@ -90,6 +112,28 @@ const Navbar = () => {
             </a>
           ))}
         </nav>
+
+        {isMenuOpen && (
+          <div
+            className={`md:hidden fixed top-16 left-0 right-0 z-10 ${
+              scrolled
+                ? "bg-emerald-950/95 backdrop-blur-md shadow-lg shadow-emerald-900/30"
+                : "bg-transparent"
+            }`}
+          >
+            <nav className="flex flex-col p-4 space-y-3">
+              {NAV_LINKS.map((link: NavLink) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-emerald-200/80 hover:text-emerald-300 text-sm tracking-widest transition-colors duration-200 font-medium"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
@@ -97,7 +141,8 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="hero"
+    <section
+      id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: `url(${HeroImage})`,
@@ -148,7 +193,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-emerald-200/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed tracking-wide">
-            Exporter of Agricultural Leaves &amp; Marine Products for Global Markets
+            Exporter of Agricultural Leaves &amp; Marine Products for Global
+            Markets
           </p>
 
           <a
@@ -416,7 +462,7 @@ const Contact: FC = () => {
 };
 
 const Footer: FC = () => {
-  const thisYear = new Date().getFullYear()
+  const thisYear = new Date().getFullYear();
   return (
     <footer className="bg-black py-8 px-6 text-center border-t border-emerald-900/50">
       <p className="text-white text-sm tracking-widest">
