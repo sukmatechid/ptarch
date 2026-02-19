@@ -2,11 +2,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  base: "/",
-  server: {
-    host: true,
-  },
+export default defineConfig(({ mode }) => {
+  const isGithub = mode === "github";
+
+  return {
+    base: isGithub ? "/ptarch/" : "/",
+    plugins: [react(), tailwindcss()],
+    server: {
+      host: true,
+    },
+  };
 });
