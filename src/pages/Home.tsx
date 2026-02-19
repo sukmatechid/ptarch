@@ -58,26 +58,26 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg">
-            <img
-              src={LogoImage}
-              alt="PT ARCH"
-              className="w-8 h-8 object-contain rounded-full"
-              onError={(e: SyntheticEvent<HTMLImageElement>): void => {
-                const target = e.currentTarget;
-                target.style.display = "none";
-                if (target.parentNode instanceof HTMLElement) {
-                  target.parentNode.innerHTML =
-                    '<span class="text-white font-black text-sm">PT</span>';
-                }
-              }}
-            />
-          </div>
-          <span className="font-black tracking-widest text-white uppercase text-md">
-            PT ARCH
-          </span>
-        </div>
+        <a className="flex items-center gap-3" href="#">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg">
+              <img
+                src={LogoImage}
+                alt="PT ARCH"
+                className="w-8 h-8 object-contain rounded-full"
+                onError={(e: SyntheticEvent<HTMLImageElement>): void => {
+                  const target = e.currentTarget;
+                  target.style.display = "none";
+                  if (target.parentNode instanceof HTMLElement) {
+                    target.parentNode.innerHTML =
+                      '<span class="text-white font-black text-sm">PT</span>';
+                  }
+                }}
+              />
+            </div>
+            <span className="font-black tracking-widest text-white uppercase text-md">
+              PT ARCH
+            </span>
+        </a>
 
         <button
           className="md:hidden p-2 hover:bg-gray-100 rounded transition-colors"
@@ -149,7 +149,7 @@ const Hero = () => {
       }}
     >
       {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-emerald-950/80"></div>
+      <div className="absolute inset-0 bg-emerald-950/70"></div>
 
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -386,7 +386,7 @@ const Vision: FC = () => {
             iconBgClassName="bg-emerald-400/20"
           />
           <VisionCard
-            icon="🤝"
+            icon="🎯"
             title="Mission"
             description="Deliver quality products sustainably and build long-term partnerships."
             titleClassName="text-teal-300"
@@ -454,7 +454,8 @@ const Contact: FC = () => {
             value="contact@example.com"
             href="mailto:contact@example.com"
           />
-          <ContactItem icon="💬" label="WhatsApp" value="+62 xxx xxxx" />
+          <ContactItem icon="💬" label="WhatsApp" value="+62 000 0000 0000" />
+          <ContactItem icon="🌐" label="Website" value="www.example.com" />
         </div>
       </div>
     </section>
@@ -465,7 +466,7 @@ const Footer: FC = () => {
   const thisYear = new Date().getFullYear();
   return (
     <footer className="bg-black py-8 px-6 text-center border-t border-emerald-900/50">
-      <p className="text-white text-sm tracking-widest">
+      <p className="text-white text-sm tracking-widest uppercase">
         © {thisYear} PT Archinus Uniex Noer. All rights reserved.
       </p>
     </footer>
